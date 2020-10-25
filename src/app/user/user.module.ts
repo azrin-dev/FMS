@@ -12,7 +12,6 @@ import { MainLogoComponent } from './main-logo/main-logo.component';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { BpSetupComponent } from './biz-plan/bp-setup/bp-setup.component';
@@ -27,7 +26,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
       ForgotPasswordComponent,
       AuthRegisterComponent,
       MainLogoComponent,
-      DashboardComponent,
       BpSetupComponent,
       BizModelComponent,
       BizModelFormComponent

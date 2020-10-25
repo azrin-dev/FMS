@@ -17,6 +17,7 @@
                 }
             }
             &-sidenav {
+                background-color: $dark-bg;
                 &-content {
                     padding-top: 69px;
                     padding-right: 5px;
@@ -25,7 +26,6 @@
             }
             &-drawer {
                 padding-top: 64px;
-                background-color: $dark-bg;
                 &-open {
                     width: 250px;
                 }
@@ -49,9 +49,6 @@
                 }
             }
             &-item {
-                &-link {
-                    color: $off-white;
-                }
                 &-icon {
                     padding: 0 10px 0 10px;
                 }

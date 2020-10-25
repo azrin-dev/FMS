@@ -26,8 +26,7 @@ router.post('/company/profile/edit',
 
 router.post('/charts/regression/linear',
     chartController.linear
-)
-
+);
 
 
 //  ** USER **

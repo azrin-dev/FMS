@@ -124,17 +124,19 @@ exports.register = async(req, res) => {
         authToken,
         authTokenExpire
     });
+
     await user.setPassword(req.body.password);
     const response = await user.save().catch(
         error => res.json(error)
     );
+
     if (response && response._id) {
         var options = {
             to: response.email,
             authToken: response.authToken
         };
         const sendEmail = nodemailer.authEmail(options);
-        res.json(response);
+        res.json({ response });
     }
 };
 

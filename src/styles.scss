@@ -14,7 +14,7 @@ $fms-accent: mat-palette($mat-pink, A200, A100, A400);
 // The warn palette is optional (defaults to red).
 $fms-warn: mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
-$fms-theme: mat-light-theme($fms-primary, $fms-accent, $fms-warn);
+$fms-theme: mat-dark-theme($fms-primary, $fms-accent, $fms-warn);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -28,8 +28,7 @@ body {
 
 body {
     margin: 0;
-    font-family: Lato, Oswald, Roboto, "Helvetica Neue", sans-serif;
-    color: #ffffff;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .ngx-charts text {
@@ -72,14 +71,4 @@ body {
 
 mat-sidenav {
     width: 300px;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

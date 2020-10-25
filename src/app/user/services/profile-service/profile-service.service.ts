@@ -73,24 +73,17 @@ export class ProfileService {
    }   //
 
    register(formValue)
-   {  console.log(formValue)
-      this.http.post('/api/user/register', formValue)
-         .subscribe(
+   {  this.http.post('/api/user/register', formValue).subscribe(
             (response: User) => {
-               if(response && response._id){
+               if(response){
                   this.userSource.next(response);
-                  this.snackBar.open('Your registration is successfull. Please check your email for authentication', 'X', {duration: 10000, panelClass: 'red-theme'});
-               }
-            },
-            error => {
-               console.log(error);
-               this.snackBar.open(error, 'X', {duration: 10000, panelClass: 'red-theme'})  
-            }   
-         )
-   }  //
+                  this.snackBar.open('Your registration is successfull. Please check your email for authentication', 'X',  {duration: 10000, panelClass: 'primaryClass'});
+            }},
+            error => this.snackBar.open(error, 'X', {duration: 10000, panelClass: 'warnClass'})
+   )}
    
-   login(credentials){
-      return this.http.post("/api/user/login", credentials).subscribe(
+   login(credentials)
+   { return this.http.post("/api/user/login", credentials).subscribe(
          (response: User) => {
             if(response && response.id){
                this.userSource.next(response);
@@ -176,8 +169,6 @@ export class ProfileService {
          catchError(error => throwError(error))
       )
    }
-
-
 
   logout()
   {

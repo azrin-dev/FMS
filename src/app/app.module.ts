@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './layout/nav/nav.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SectorsComponent } from './charts/sectors/sectors.component';
@@ -31,6 +31,7 @@ import { StateSectorForecastComponent } from './charts/state-sector-forecast/sta
 import { RegressionComponent } from './charts/regression/regression.component';
 import { PagesComponent } from './pages/pages.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SidenavComponent } from './pages/dashboard/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     StateSectorForecastComponent,
     RegressionComponent,
     PagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
