@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "fms": {
+        "stats": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -21,7 +21,7 @@
                             "webcola",
                             "dagre"
                         ],
-                        "outputPath": "dist/fms",
+                        "outputPath": "dist/stats",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "fms:build"
+                        "browserTarget": "stats:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "fms:build:production"
+                            "browserTarget": "stats:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "fms:build"
+                        "browserTarget": "stats:build"
                     }
                 },
                 "test": {
@@ -115,18 +115,18 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "fms:serve"
+                        "devServerTarget": "stats:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "fms:serve:production"
+                            "devServerTarget": "stats:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "fms",
+    "defaultProject": "stats",
     "cli": {
         "analytics": "15ec01ed-3fe6-4200-8e0e-3e4afc4e7a38"
     }

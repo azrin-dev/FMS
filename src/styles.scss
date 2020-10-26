@@ -9,16 +9,24 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$fms-primary: mat-palette($mat-indigo);
-$fms-accent: mat-palette($mat-pink, A200, A100, A400);
+$stats-primary: mat-palette($mat-indigo);
+$stats-accent: mat-palette($mat-pink, A200, A100, A400);
 // The warn palette is optional (defaults to red).
-$fms-warn: mat-palette($mat-red);
+$stats-warn: mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
+<<<<<<< HEAD
+<<<<<<< HEAD
 $fms-theme: mat-dark-theme($fms-primary, $fms-accent, $fms-warn);
+=======
+$stats-theme: mat-light-theme($stats-primary, $stats-accent, $stats-warn);
+>>>>>>> parent of c8f7799... Rename project
+=======
+$stats-theme: mat-light-theme($stats-primary, $stats-accent, $stats-warn);
+>>>>>>> parent of c8f7799... Rename project
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($fms-theme);
+@include angular-material-theme($stats-theme);
 @import './app/configurations/scss/index.scss';
 @import 'src/app/user/user.component';
 html,

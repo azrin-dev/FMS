@@ -25,11 +25,11 @@ app.set('view engine', 'pug');
 const api = require('./server/routes/api');
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
-app.use(express.static(path.join(__dirname, 'dist/fms/')));
+app.use(express.static(path.join(__dirname, 'dist/stats/')));
 
 // Return other routes to Angular index file
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './dist/fms/index.html'));
+    res.sendFile(path.join(__dirname, './dist/stats/index.html'));
 });
 
 // Takes the raw requests and turns them into usable properties on req.body
