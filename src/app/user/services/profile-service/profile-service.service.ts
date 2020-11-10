@@ -75,25 +75,25 @@ export class ProfileService {
    register(formValue)
    {  this.http.post('/api/user/register', formValue).subscribe(
             (response: User) => {
-               if(response){
+               if(response && response.id != ''){
+                  console.log(response);
                   this.userSource.next(response);
-                  this.snackBar.open('Your registration is successfull. Please check your email for authentication', 'X',  {duration: 10000, panelClass: 'primaryClass'});
-            }},
-            error => this.snackBar.open(error, 'X', {duration: 10000, panelClass: 'warnClass'})
+                  this.snackBar.open('Your registration is successfull. Please check your email for authentication', 'X',  {duration: 10000, panelClass: 'panel__primary'});
+               }
+               else{
+                  console.log('noId');
+                  this.snackBar.open('Your registration is not successfull. You may have already registered', 'X',  {duration: 10000, panelClass: 'panel__warn'});
+               }
+            },
+            error => {
+               console.log(error);
+               this.snackBar.open(error.message, 'X', {duration: 10000, panelClass: 'panel__warn'});
+            }
    )}
    
-   login(credentials)
-   { return this.http.post("/api/user/login", credentials).subscribe(
-         (response: User) => {
-            if(response && response.id){
-               this.userSource.next(response);
-               localStorage.setItem('token', response.token);
-               this.snackBar.open('Congratulation, your login is successful.', 'X', {duration: 10000, panelClass: 'lm__panel-primary'});
-               this.router.navigateByUrl("/user/dashboard");
-            }
-            else this.snackBar.open('Your login is not successful. Please check your email or password', 'X', {duration: 10000, panelClass: 'lm__panel-accent'});
-         },
-         error => this.snackBar.open('We encountered a problem with your login: error.', 'X', {duration: 10000, panelClass: 'lm__panel-warn'})
+   login(credentials){ 
+      return this.http.post("/api/user/login", credentials).pipe(
+         catchError(error => throwError(error))
       )
    }
 

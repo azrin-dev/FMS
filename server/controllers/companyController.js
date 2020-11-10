@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Company = mongoose.model('Company');
 const { promisify } = require('es6-promisify');
+const { findOneAndUpdate, findOne } = require('../models/User');
+const { error } = require('protractor');
+const { throwError } = require('rxjs');
 
 // Create Mail Contact
 exports.profileEdit = async(req, res) => {
@@ -29,3 +32,32 @@ exports.profileEdit = async(req, res) => {
         res.json(newCompany);
     }
 };
+
+exports.checkCompanyExist = async (req, res, next) => {
+   const existingCompany = await Company.findOne({name: req.body.name}).catch(
+      error => res.json(error)
+   );
+   if(!existingCompany) return next();
+   else res.json({status: 'exist'});
+}
+
+exports.saveNewCompany = async (req, res) => {   
+   const newCompany = new Company(req.body);
+   const company = await newCompany.save().catch(
+      error => res.json(error)
+   );
+   if(company && company._id){
+      res.json(company);
+   }
+   
+}
+
+exports.getCompanies = async (req, res) => {
+   const companies = await Company.find({owner: req.body.owner}).catch(
+      error => res.json(error)
+   );
+   if(companies && companies.id != ''){
+      console.log(companies);
+      res.json(companies);
+   }
+}

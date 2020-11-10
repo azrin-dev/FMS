@@ -4,9 +4,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { User } from 'src/app/configurations/model/user';
-import { httpOptions } from 'src/app/user/services/httpOptions';
-
 
 @Injectable({ providedIn: "root"})
 
@@ -19,7 +16,6 @@ export class AuthService {
 
 
    login(credentials){
-      console.log(credentials);
       return this.http.post("/api/user/login", credentials).pipe(
          catchError(error => throwError(error))
       );

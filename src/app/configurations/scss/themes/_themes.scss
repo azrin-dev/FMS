@@ -9,14 +9,16 @@ $custom-theme-warn: mat-palette($mat-custom-pink-accent, 900);
 $custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
 @include angular-material-theme($custom-theme);
 // Snackbar Theme
-.primaryClass {
-    background-color: #fe4364;
-    color: #ffffff;
-    font-weight: bolder;
-}
 
-.warnClass {
-    background-color: #fe4364;
-    color: #ffffff;
-    font-weight: bolder;
+.panel{
+   &__primary{
+      background-color: #fe4364;
+      color: #ffffff;
+      font-weight: bolder;
+   }
+   &__warn{
+      background-color: #b71c1c;
+      color: #ffffff;
+      font-weight: bolder;
+   }
 }

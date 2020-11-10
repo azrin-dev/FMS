@@ -1,0 +1,20 @@
+<div class="feeds" fxLayout="row wrap" fxLayoutAlign="space-around stretch">
+
+   <div class="feeds__card" fxFlex="7vh"
+      *ngFor="let feed of youtubeFeeds; let i=index"        
+   >     
+      <div class="feeds__card-thumbnail"
+         (click)="mediaPlayer(feed)"
+      >
+         <img class="feeds__card-thumbnail-image" 
+            src="{{feed.snippet.thumbnails.default.url}}" 
+         >
+      </div>
+
+      <div class="feeds__card-title">
+         No {{ i+1 }}: {{ feed.snippet.title | titlecase | slice:0:10 }} <br>
+         Views: {{ feed.statistics.viewCount | currency:'':'':'5.0-2'}}
+      </div>      
+   </div>
+
+</div>

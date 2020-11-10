@@ -1,11 +1,9 @@
-// const countries = require('world-countries');
 const countries = require('../json/places/country.json');
 const states = require('../json/places/state.json');
 const cities = require('../json/places/city.json');
-const express = require('express');
-const app = express();
+const { throwError } = require('rxjs');
 
-exports.reqCities = async (req, res) => {
+exports.reqCity = async (req, res) => {
    let request = req.body.city.toLowerCase();
    var cityArr = [];
    const resultCities = cities.reduce((acc, value) => {
@@ -16,6 +14,7 @@ exports.reqCities = async (req, res) => {
       acc = cityArr;
       return acc;
    }, []);
+
    res.json(resultCities);
 }
 
@@ -68,35 +67,24 @@ exports.reqCountryFromState = (req, res, next) => {
    else return;
 }
 
-exports.reqStateCountry = (req, res, next) => {
-
-   
-
-   let request = req.body.city.toLowerCase();
+exports.reqStateCountry = async (req, res) => { 
+   var request = req.body.city.toLowerCase();
    const city = cities.reduce((acc, value) => {
-      let name = value.name.toLowerCase();
+      var name = value.name.toLowerCase();
       if(name ===  request ) acc = value;
       return acc;
-   },);     // { id: '26983', name: 'Kuantan', state_id: '2315' }
-   
-   console.log(city);
-   
-   let state = states.reduce((acc, value) => {
+   },);     
+   var state = states.reduce((acc, value) => {
       if(value.id ===  city.state_id ) acc = value;
       return acc;
-   });      // { id: '2315', name: 'Pahang', country_id: '132' }
-
-   console.log(state);
-
-   let country = countries.reduce((acc, value) => {
+   });     
+   var country = countries.reduce((acc, value) => {
       if(value.id ===  state.country_id ) acc = value;
-      return acc; // { id: '132', sortname: 'MY', name: 'Malaysia', phonecode: '60' }
+      return acc; 
    });
-
-   console.log(country);
-
-   res.locals.autoCompleteStateCountry = { state: state.name, country: country.name, phonecode: country.phonecode };
-   next();
+   var data = { state: state.name, country: country.name, phoneCode: country.phonecode };
+   if(!data) return;
+   else res.json(data);
 }
 
 exports.reqCountryFromPhonecode = (req, res, next) => {

@@ -18,7 +18,7 @@ export class AdminAuthGuardService implements CanActivate{
    {  let status = this.profileService.getLoggedStatus();
       if(status.user.admin) return true;
       else {
-         this.snackBar.open('You are not authorized to acces this page, please Login', 'X', {duration: 10000, panelClass: 'red-theme'});
+         this.snackBar.open('You are not authorized to acces this page, please Login', 'X', {duration: 10000, panelClass: 'panel__warn'});
          this.router.navigate(['']); 
          return false;   }}  //
 

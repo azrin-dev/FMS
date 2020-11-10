@@ -1,0 +1,62 @@
+<div class="menu__container" fxLayout="column" fxLayoutAlign="center center">
+
+   <div fxFlex="30vh" fxLayout="column" fxLayoutAlign="center center">
+      <img class="menu__logo" src="assets/images/logo.png" alt="">
+   </div>
+
+   <div fxFlex="70vh" class="menu" fxLayout="column" fxLayoutAlign="center center">
+
+      <mat-accordion fxFlex="80" class="menu__accordion" multi="false">
+
+         <mat-expansion-panel class="menu__expansion-panel" 
+            close hideToggle             
+         >
+            <mat-expansion-panel-header>            
+               <mat-panel-title>
+                  {{ menus.title | uppercase }}
+               </mat-panel-title> 
+               <mat-icon class="menu__expansion-panel-icon-hide-toggle" 
+                  color="primary"
+               >
+                  {{ menus.icon }}
+               </mat-icon>                     
+            </mat-expansion-panel-header> 
+         </mat-expansion-panel>
+
+         <mat-expansion-panel class="menu__expansion-panel" close  
+            *ngFor="let menu of menus.items" 
+         >
+            <mat-expansion-panel-header hideToggle>        
+               <mat-panel-title>
+                     {{ menu.title | titlecase }}
+               </mat-panel-title> 
+               <mat-icon class="menu__expansion-panel-icon" 
+                  color="primary" 
+               >
+                  {{ menu.icon }}
+               </mat-icon>                     
+            </mat-expansion-panel-header>         
+            <mat-nav-list class="menu__list" 
+               role="list" 
+               *ngIf="menu.items[0]"
+            >
+               <mat-divider></mat-divider>
+               <mat-list-item class="menu__list-item"                
+                  role="listitem"   
+                  *ngFor="let item of menu.items"   
+               >
+                  <a class="menu__list-item-link"   
+                     matLine 
+                     (click)="navigateTo(item)"
+                  >
+                     {{ item | titlecase }}
+                  </a>
+               </mat-list-item>
+            </mat-nav-list>
+         </mat-expansion-panel>
+
+      </mat-accordion>
+
+   </div>
+
+</div>   

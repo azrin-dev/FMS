@@ -55,6 +55,26 @@
             }
         }
         &__container {
+
+            &-drawer{
+               background-color: #403B44;
+               min-height: 100%;
+               width: auto;
+            }
+
+            &-layout{
+               height: 100%;
+               width:auto;
+               display: contents !important;
+               background-color: transparent;
+            }
+
+            &-apps{
+               height: 100%;
+               width:auto;               
+            }
+
+
             &-100p {
                 height: 100%;
                 width: 100%;

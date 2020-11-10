@@ -116,7 +116,6 @@ exports.userExist = async(req, res, next) => {
 };
 
 exports.register = async(req, res) => {
-
     const authToken = crypto.randomBytes(20).toString('hex');
     const authTokenExpire = Date.now() + 3600000;
     const user = new User({
@@ -124,18 +123,16 @@ exports.register = async(req, res) => {
         authToken,
         authTokenExpire
     });
-
     await user.setPassword(req.body.password);
     const response = await user.save().catch(
         error => res.json(error)
     );
-
     if (response && response._id) {
-        var options = {
-            to: response.email,
-            authToken: response.authToken
-        };
-        const sendEmail = nodemailer.authEmail(options);
+      //   var options = {
+      //       to: response.email,
+      //       authToken: response.authToken
+      //   };
+      //   const sendEmail = nodemailer.authEmail(options);
         res.json({ response });
     }
 };
@@ -183,6 +180,7 @@ exports.authenticate = async(req, res, next) => {
 }; //
 
 exports.login = async(req, res) => {
+   console.log(req.body);
     const authenticate = User.authenticate();
     const authenticateUser = await authenticate(req.body.email, req.body.password)
         .catch(error => res.json(error));

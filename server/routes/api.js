@@ -1,22 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const { catchErrors } = require('../handlers/errorHandlers');
-
 const validateController = require('../controllers/validateController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const postController = require('../controllers/postController');
 const imageController = require('../controllers/imageController');
-const uploadController = require('../controllers/uploadController');
 const autoCompleteController = require('../controllers/autoCompleteController');
 const companyController = require('../controllers/companyController');
 const chartController = require('../controllers/chartController');
+const feedsController = require('../controllers/feedsController');
+
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+
 
 const pug = require('pug');
 
 const multer = require('multer');
+const app = require('../../app');
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
+
+
+// TEST
+
+router.get('/info/feeds/youtube/trending', 
+   catchErrors(feedsController.youtubeTrending)
+);
 
 
 // ** COMPANY **
@@ -27,6 +38,16 @@ router.post('/company/profile/edit',
 router.post('/charts/regression/linear',
     chartController.linear
 );
+
+router.post('/company/new/save', jsonParser,
+   catchErrors(companyController.checkCompanyExist),
+   catchErrors(companyController.saveNewCompany)
+)
+
+// ** COMPANIES **
+router.post('/companies/find', jsonParser,
+   catchErrors(companyController.getCompanies)
+)
 
 
 //  ** USER **
@@ -42,7 +63,7 @@ router.post('/user/location',
     catchErrors(userController.reqLocation)
 );
 
-router.post('/user/register',
+router.post('/user/register', jsonParser,
     validateController.reqValidateAuth,
     catchErrors(userController.register)
 );
@@ -57,7 +78,7 @@ router.post('/user/authenticate',
     catchErrors(userController.authenticate)
 );
 
-router.post('/user/login',
+router.post('/user/login', jsonParser,
     validateController.reqValidateAuth,
     catchErrors(userController.login)
 );
@@ -92,9 +113,13 @@ router.post('/user/profile/update',
 );
 
 // Autocomplete
-router.post('/user/profile/autocomplete/cities',
-    autoCompleteController.reqCities
+router.post('/autocomplete/city', jsonParser, 
+    catchErrors(autoCompleteController.reqCity)
 );
+
+router.post('/autocomplete/state-country', jsonParser,
+   catchErrors(autoCompleteController.reqStateCountry)
+)
 
 router.post('/user/profile/autocomplete/states',
     autoCompleteController.reqStates

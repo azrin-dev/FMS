@@ -1,0 +1,33 @@
+.dashboard{
+   margin: 0;
+   width: 100vw;
+
+   &__container{      
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;      
+   }
+   &__control{
+      bottom: 20px;
+      left: 22vw;
+      position: fixed;
+      z-index: 999;
+   }
+   &__drawer{
+      &-main-content{
+         overflow-x: hidden;
+      }
+      &-left{
+         width: 20vw;
+         
+      }
+      &-right-content{
+         width: 20vw;
+         min-height: 100%;
+         width: 73%;
+         background-color:#424242;
+      }
+   }
+   
+
+}

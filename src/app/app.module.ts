@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './layout/nav/nav.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SectorsComponent } from './charts/sectors/sectors.component';
@@ -11,8 +10,6 @@ import { ClassComponent } from './charts/class/class.component';
 import { IntroComponent } from './charts/intro/intro.component';
 import { StatesConstructionComponent } from './charts/states-construction/states-construction.component';
 import { StatesManufacturingComponent } from './charts/states-manufacturing/states-manufacturing.component';
-import { BodyComponent } from './layout/body/body.component';
-import { FooterComponent } from './layout/footer/footer.component';
 import { StateSectorHistoryComponent } from './charts/state-sector-history/state-sector-history.component';
 import { StatesSectorComponent } from './charts/states-sector/states-sector.component';
 import { LineChartComponent } from './charts/intro/line-chart/line-chart.component';
@@ -29,35 +26,26 @@ import { UserModule } from './user/user.module';
 import { ClickableComponent } from './charts/configs/clickable/clickable.component';
 import { StateSectorForecastComponent } from './charts/state-sector-forecast/state-sector-forecast.component';
 import { RegressionComponent } from './charts/regression/regression.component';
-import { PagesComponent } from './pages/pages.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { SidenavComponent } from './pages/dashboard/sidenav/sidenav.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     SectorsComponent,
     ClassComponent,
     IntroComponent,
     StatesConstructionComponent,
     StatesManufacturingComponent,
-    BodyComponent,
-    FooterComponent,
     StateSectorHistoryComponent,
     StatesSectorComponent,
     LineChartComponent,
     MindMapComponent,
     ClickableComponent,
     StateSectorForecastComponent,
-    RegressionComponent,
-    PagesComponent,
-    DashboardComponent,
-    SidenavComponent
+    RegressionComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    BrowserModule,    
     NgxChartsModule,
     FlexLayoutModule,
     CommonModule,
@@ -68,7 +56,9 @@ import { SidenavComponent } from './pages/dashboard/sidenav/sidenav.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    UserModule
+    UserModule,
+    DashboardModule,
+    AppRoutingModule
   ],
   providers: [
      LineChartService

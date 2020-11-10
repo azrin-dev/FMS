@@ -30,9 +30,9 @@ export class ForgotPasswordComponent implements OnInit {
       const email = this.fpForm.get('email').value;
       this.profileService.forgotPassword(email).subscribe(
          (response: any) => {
-             this.snackBar.open('A password reset link has been emailed to your registered email.', 'X', { duration: 10000, panelClass: 'lm__panel-primary' })
+             this.snackBar.open('A password reset link has been emailed to your registered email.', 'X', { duration: 10000, panelClass: 'panel__warn' })
          },
-         (error => this.snackBar.open(`Error: ${error}`, 'X', { duration: 10000, panelClass: 'lm__panel-warn' }))
+         (error => this.snackBar.open(`Error: ${error}`, 'X', { duration: 10000, panelClass: 'panel__warn' }))
       )
   }
 

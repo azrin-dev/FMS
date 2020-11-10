@@ -21,14 +21,25 @@ $fms-theme: mat-dark-theme($fms-primary, $fms-accent, $fms-warn);
 @include angular-material-theme($fms-theme);
 @import './app/configurations/scss/index.scss';
 @import 'src/app/user/user.component';
-html,
-body {
-    height: 100%;
+//Typography
+$custom-typography: mat-typography-config(
+  $font-family: 'Lato, Raleway',
+  $headline: mat-typography-level(32px, 48px, 800),
+  $body-1: mat-typography-level(18px, 24px, 700)
+);
+
+
+html {
+   min-height: 100vh; 
+   margin: 0;
+   overflow-x: hidden;
 }
 
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+body{
+   min-height: 100vh; 
+   margin: 0;
+   overflow-x: hidden;
+   font-size: 18px;
 }
 
 .ngx-charts text {
@@ -69,6 +80,20 @@ body {
     color: #303030;
 }
 
-mat-sidenav {
-    width: 300px;
+mat-drawer-container{
+   min-height: 100%;
+   width: auto;
+}
+
+mat-drawer-content{
+   min-height: 100%;
+   width: auto;
+}
+
+.mat-expansion-panel{
+   background-color: $dark-bg;
+
+   &-header{
+      background-color: $dark-bg;      
+   }
 }

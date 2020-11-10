@@ -28,12 +28,11 @@ exports.reqValidateUpdateProfile = (req, res, next) => {
 };
 
 exports.reqValidateAuth = (req, res, next) => {
-
     let keys = {};
     keys = Object.keys(req.body);
     let validator = [];
     validator = keys.reduce((acc, key) => {
-
+       
         if (key == 'email') {
             return body('email').isEmail().not().isEmpty().trim().escape()
                 .normalizeEmail({

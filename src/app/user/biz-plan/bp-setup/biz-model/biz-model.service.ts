@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { Company } from 'src/app/configurations/model/company';
+import { Company } from 'src/app/configurations/interface/company';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 
 @Injectable({
